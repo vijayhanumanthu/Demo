@@ -70,6 +70,26 @@ public class StudentDao {
 		}
 		return result;
 	}
+	public int editStudentDetails(StudentPojo studentdetails) {
+		int result=0;
+		// TODO Auto-generated method stub
+		String EDIT_STUDENT_DETAILS = "UPDATE studentdetails SET studentname = ?, Studentclass = ?, Section=?, Bloodtype=? WHERE id = ?";
+		try (
 
+				PreparedStatement preparedStatement = connection.prepareStatement(EDIT_STUDENT_DETAILS)) {
+
+			preparedStatement.setLong(5, studentdetails.getStudentId());
+			preparedStatement.setString(1, studentdetails.getStudentName());
+			preparedStatement.setString(2, studentdetails.getStudentClass());
+			preparedStatement.setString(3, studentdetails.getStudentSection());
+			preparedStatement.setString(4, studentdetails.getStudentBloodGroup());
+
+			result = preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }
