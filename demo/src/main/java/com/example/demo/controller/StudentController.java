@@ -32,6 +32,16 @@ public class StudentController {
 		return details;
 
 	}
+	
+	@PutMapping("/edit")
+	public StudentPojo editStudentDetails(@RequestBody StudentPojo studentdetails) throws ClassNotFoundException {
+		StudentPojo details = null;
+		int result = studentdao.editStudentDetails(studentdetails);
+		if (result == 1) {
+			details = studentdao.getStudentDetailsbyId(studentdetails.getStudentId());
+		}
+		return details;
+	}
 
 
 }
