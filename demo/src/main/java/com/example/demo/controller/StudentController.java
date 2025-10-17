@@ -42,6 +42,16 @@ public class StudentController {
 		}
 		return details;
 	}
+	
+	@DeleteMapping("/{id}")
+	public String deleteStudentDetails(@PathVariable("id") int id) {
+		String message= "Record not Found";
+		int result = studentdao.deleteStudentDetails(id);
+		if (result==1){
+			message= "Record Deleted";
+		}
+		return message;
 
+	}
 
 }
