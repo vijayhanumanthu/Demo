@@ -91,5 +91,24 @@ public class StudentDao {
 		}
 		return result;
 	}
+	
+	public int deleteStudentDetails(int id) {
+		// TODO Auto-generated method stub
+		int result=0;
+		// TODO Auto-generated method stub
+		String DELETE_STUDENT_DETAILS = "DELETE FROM studentdetails WHERE id = ?";
+		try (
+
+				PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STUDENT_DETAILS)) {
+
+			preparedStatement.setLong(1, id);
+
+			result = preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }
