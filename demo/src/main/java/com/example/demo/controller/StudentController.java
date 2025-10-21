@@ -65,5 +65,12 @@ public class StudentController {
 		return details;
 
 	}
+	
+	@GetMapping("/allDetails")
+	public List<StudentPojo> getAllStudentDetails() {
+		return studentdao.getAllStudentDetails();
+		
+
+	}
 
 }
