@@ -53,5 +53,17 @@ public class StudentController {
 		return message;
 
 	}
+	
+	@GetMapping("/{id}")
+	public StudentPojo getStudentDetails(@PathVariable("id") int id) {
+		StudentPojo details = new StudentPojo();
+		try {
+			details = studentdao.getStudentDetailsbyId(id);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return details;
+
+	}
 
 }
