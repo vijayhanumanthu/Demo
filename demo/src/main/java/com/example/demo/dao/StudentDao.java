@@ -111,5 +111,29 @@ public class StudentDao {
 		return result;
 	}
 	
+	public List<StudentPojo> getAllStudentDetails() {
+		ResultSet result = null;
+		List<StudentPojo> studentList=new ArrayList<StudentPojo>();
+		String GET_ALL_STUDENT_DETAILS = "SELECT * FROM studentdetails";
+		try (
+
+				PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_STUDENT_DETAILS)) {
+
+			result = preparedStatement.executeQuery();
+			while (result.next()) {
+				StudentPojo student = new StudentPojo();
+				student.setStudentId(result.getInt("id"));
+				student.setStudentName(result.getString("studentname"));
+				student.setStudentClass(result.getString("Studentclass"));
+				student.setStudentSection(result.getString("Section"));
+				student.setStudentBloodGroup(result.getString("Bloodtype"));
+				studentList.add(student);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return studentList;
+	}
 
 }
