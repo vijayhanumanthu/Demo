@@ -19,15 +19,18 @@ import com.example.demo.entity.StudentPojo;
 @RequestMapping("/Student")
 public class StudentController {
 
-	@Autowired
-	private StudentDao studentdao;
+	private final StudentDao studentDao;
+
+	public StudentController(StudentDao studentDao) {
+	        this.studentDao = studentDao;
+	    }
 
 	@PostMapping("/add")
 	public StudentPojo addStudentDetails(@RequestBody StudentPojo studentdetails) throws ClassNotFoundException {
 		StudentPojo details = null;
-		int result = studentdao.addStudentDetails(studentdetails);
+		int result = studentDao.addStudentDetails(studentdetails);
 		if (result == 1) {
-			details = studentdao.getStudentDetailsbyId(studentdetails.getStudentId());
+			details = studentDao.getStudentDetailsbyId(studentdetails.getStudentId());
 		}
 		return details;
 
@@ -36,9 +39,9 @@ public class StudentController {
 	@PutMapping("/edit")
 	public StudentPojo editStudentDetails(@RequestBody StudentPojo studentdetails) throws ClassNotFoundException {
 		StudentPojo details = null;
-		int result = studentdao.editStudentDetails(studentdetails);
+		int result = studentDao.editStudentDetails(studentdetails);
 		if (result == 1) {
-			details = studentdao.getStudentDetailsbyId(studentdetails.getStudentId());
+			details = studentDao.getStudentDetailsbyId(studentdetails.getStudentId());
 		}
 		return details;
 	}
@@ -46,7 +49,7 @@ public class StudentController {
 	@DeleteMapping("/{id}")
 	public String deleteStudentDetails(@PathVariable("id") int id) {
 		String message= "Record not Found";
-		int result = studentdao.deleteStudentDetails(id);
+		int result = studentDao.deleteStudentDetails(id);
 		if (result==1){
 			message= "Record Deleted";
 		}
@@ -58,7 +61,7 @@ public class StudentController {
 	public StudentPojo getStudentDetails(@PathVariable("id") int id) {
 		StudentPojo details = new StudentPojo();
 		try {
-			details = studentdao.getStudentDetailsbyId(id);
+			details = studentDao.getStudentDetailsbyId(id);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -68,7 +71,7 @@ public class StudentController {
 	
 	@GetMapping("/allDetails")
 	public List<StudentPojo> getAllStudentDetails() {
-		return studentdao.getAllStudentDetails();
+		return studentDao.getAllStudentDetails();
 		
 
 	}
