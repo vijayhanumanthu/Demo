@@ -16,7 +16,7 @@ import com.example.demo.dao.StudentDao;
 import com.example.demo.entity.StudentPojo;
 
 @RestController
-@RequestMapping("/Student")
+@RequestMapping("/students")
 public class StudentController {
 
 	private final StudentDao studentDao;
@@ -25,7 +25,7 @@ public class StudentController {
 	        this.studentDao = studentDao;
 	    }
 
-	@PostMapping("/add")
+	@PostMapping()
 	public StudentPojo addStudentDetails(@RequestBody StudentPojo studentdetails) throws ClassNotFoundException {
 		StudentPojo details = null;
 		int result = studentDao.addStudentDetails(studentdetails);
@@ -69,7 +69,7 @@ public class StudentController {
 
 	}
 	
-	@GetMapping("/allDetails")
+	@GetMapping()
 	public List<StudentPojo> getAllStudentDetails() {
 		return studentDao.getAllStudentDetails();
 		
