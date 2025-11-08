@@ -66,14 +66,11 @@ public class StudentController {
 			e.printStackTrace();
 		}
 		return details;
-
 	}
 	
 	@GetMapping()
 	public List<StudentPojo> getAllStudentDetails() {
 		return studentDao.getAllStudentDetails();
-		
-
 	}
 
 }
