@@ -55,7 +55,6 @@ public class StudentDao {
 
 	public int addStudentDetails(StudentPojo studentdetails) {
 		int result=0;
-		// TODO Auto-generated method stub
 		String ADD_STUDENT_DETAILS = "INSERT INTO studentdetails(id,studentname,Studentclass,Section,Bloodtype) VALUES (?,?,?,?,?)";
 		try (Connection connection = DataSourceUtils.getConnection(dataSource);
 	             PreparedStatement preparedStatement = connection.prepareStatement(ADD_STUDENT_DETAILS)) {
@@ -75,7 +74,6 @@ public class StudentDao {
 	}
 	public int editStudentDetails(StudentPojo studentdetails) {
 		int result=0;
-		// TODO Auto-generated method stub
 		String EDIT_STUDENT_DETAILS = "UPDATE studentdetails SET studentname = ?, Studentclass = ?, Section=?, Bloodtype=? WHERE id = ?";
 		try (Connection connection = DataSourceUtils.getConnection(dataSource);
 	             PreparedStatement preparedStatement = connection.prepareStatement(EDIT_STUDENT_DETAILS)) {
@@ -95,9 +93,7 @@ public class StudentDao {
 	}
 	
 	public int deleteStudentDetails(int id) {
-		// TODO Auto-generated method stub
 		int result=0;
-		// TODO Auto-generated method stub
 		String DELETE_STUDENT_DETAILS = "DELETE FROM studentdetails WHERE id = ?";
 		try (Connection connection = DataSourceUtils.getConnection(dataSource);
 	             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STUDENT_DETAILS)) {
