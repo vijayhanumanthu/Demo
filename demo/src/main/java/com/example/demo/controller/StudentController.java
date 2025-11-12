@@ -16,7 +16,7 @@ import com.example.demo.dao.StudentDao;
 import com.example.demo.entity.StudentPojo;
 
 @RestController
-@RequestMapping("/students")
+@RequestMapping("/student")
 public class StudentController {
 
 	private final StudentDao studentDao;
